@@ -20,16 +20,15 @@ public class CarService {
             new Car("HONDA", "ACCORD", 2006),
             new Car("LADA", "VESTA", 2015));
 
-    public List<Car> getCarList(int carCount) {
-        if (carCount >= 5 || carCount == 0) {
+    public List<Car> getCarList(Integer carCount) {
+        try {
+            if(carCount < 5){
+                return carList.subList(0, carCount);
+            } else {
+                return carList;
+            }
+        } catch (NullPointerException e) {
             return carList;
-        } else {
-            return carList.subList(0, carCount);
         }
-
-    }
-
-    public List<Car> getFullCarList() {
-        return carList;
     }
 }

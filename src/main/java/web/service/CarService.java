@@ -2,6 +2,7 @@ package web.service;
 
 import org.springframework.stereotype.Service;
 import web.model.Car;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,14 +22,12 @@ public class CarService {
             new Car("LADA", "VESTA", 2015));
 
     public List<Car> getCarList(Integer carCount) {
-        try {
-            if(carCount < 5){
-                return carList.subList(0, carCount);
-            } else {
-                return carList;
-            }
-        } catch (NullPointerException e) {
+
+        if (carCount != null && carCount < 5) {
+            return carList.subList(0, carCount);
+        } else {
             return carList;
         }
     }
 }
+
